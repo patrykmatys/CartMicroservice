@@ -6,6 +6,7 @@ import java.util.UUID;
 
 public interface CartService {
     Cart addToCart(String user, UUID itemId, Integer quantity);
-    Cart getCartByUser (String user);
+    Cart getCartByUser(String user);
     Cart removeFromCart(String user, UUID itemId, Integer quantity);
+    Cart emptyCart(String user);
 }

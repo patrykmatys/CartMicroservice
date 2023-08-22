@@ -39,7 +39,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart getCartByUser (String user) {
+    public Cart getCartByUser(String user) {
         Cart cart = cartRepository.findCartByUser(user);
 
         if (cart == null) {
@@ -49,5 +49,13 @@ public class CartServiceImpl implements CartService {
         }
 
         return cart;
+    }
+
+    @Override
+    public Cart emptyCart(String user) {
+        Cart cart = getCartByUser(user);
+        cart.setItems(new HashMap<>());
+
+        return cartRepository.save(cart);
     }
 }

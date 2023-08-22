@@ -34,7 +34,12 @@ public class CartController {
     }
 
     @GetMapping("/{user}")
-    public ResponseEntity<Cart> addToCart(@PathVariable String user) {
+    public ResponseEntity<Cart> getCart(@PathVariable String user) {
         return ResponseEntity.ok(cartService.getCartByUser(user));
+    }
+
+    @PostMapping("/remove/{user}")
+    public ResponseEntity<Cart> emptyCart(@PathVariable String user) {
+        return ResponseEntity.ok(cartService.emptyCart(user));
     }
 }
