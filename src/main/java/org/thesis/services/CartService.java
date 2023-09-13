@@ -9,4 +9,5 @@ public interface CartService {
     Cart getCartByUser(String user);
     Cart removeFromCart(String user, UUID itemId, Integer quantity);
     Cart emptyCart(String user);
+    Cart updateItemInCart(String user, UUID itemId, Integer quantity);
 }

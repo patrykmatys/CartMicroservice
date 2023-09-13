@@ -39,6 +39,20 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public Cart updateItemInCart(String user, UUID itemId, Integer quantity) {
+        Cart cart = getCartByUser(user);
+
+        HashMap<UUID, Integer> items = cart.getItems();
+        if (quantity <= 0) {
+            items.remove(itemId);
+        } else {
+            items.replace(itemId, quantity);
+        }
+
+        return cartRepository.save(cart);
+    }
+
+    @Override
     public Cart getCartByUser(String user) {
         Cart cart = cartRepository.findCartByUser(user);
 

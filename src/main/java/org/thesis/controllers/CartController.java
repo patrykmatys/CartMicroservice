@@ -33,6 +33,16 @@ public class CartController {
         );
     }
 
+    @PostMapping("/update")
+    public ResponseEntity<Cart> updateItemInCart(@RequestBody CartRequest cartRequest) {
+        return ResponseEntity.ok(cartService.updateItemInCart(
+                        cartRequest.getUser(),
+                        cartRequest.getItemId(),
+                        cartRequest.getQuantity()
+                )
+        );
+    }
+
     @GetMapping("/{user}")
     public ResponseEntity<Cart> getCart(@PathVariable String user) {
         return ResponseEntity.ok(cartService.getCartByUser(user));
